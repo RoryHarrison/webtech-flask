@@ -50,16 +50,21 @@ def highscores():
     
     #ChampionData
     cdata = pd.read_json(requests.get("http://ddragon.leagueoflegends.com/cdn/9.23.1/data/en_US/champion.json").content)
-    
+    cdata["data"]["Fiddlesticks"]["id"] = "FiddleSticks"
+
     champion = request.args.get("champion")
+
+    #Edge Case for messed up data on Riot's end
 
     if champion is not None:
         for champ in cdata["data"]:
             if champ["name"] == champion:
                 hs_data = json.loads(requests.get("https://www.masterypoints.com/api/v1.1/highscores/champion/{}/0/30/any".format(champ["key"])).content)
-                return render_template("highscores.html", champ=cdata["data"], hs_data=hs_data)
+                if champion == "Wukong":
+                    return render_template("highscores.html", champ=cdata["data"]["MonkeyKing"], hs_data=hs_data)
+                return render_template("highscores.html", champ=cdata["data"][champion], hs_data=hs_data)
         abort(404)
-    return "neet :("
+    return render_template("highscores_nav.html", cdata=cdata["data"])
 
 
 

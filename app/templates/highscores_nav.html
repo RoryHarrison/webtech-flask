@@ -8,7 +8,12 @@
     <div class="d-flex justify-content-center mx-5">
         <div class="grid-container">
             {% for champ in cdata %}
-            <div class="grid-item"><img class="icon" src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/{{ cdata['id'] }}_0.jpg"></div>
+            <a href="/highscores?champion={{ champ['name'] }}">
+                <div class="grid-item">
+                    <img class="icon" src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/{{ champ['id'] }}_0.jpg">
+                    <p>{{ champ["name"] }}</p>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>

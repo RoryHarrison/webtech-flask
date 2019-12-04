@@ -17,7 +17,24 @@ body,html{
 }
 
 .icon {
-    height: 30px;
+    height: 120px;
     width: auto;
     border: 5px solid #3985e0;
+}
+
+.grid-container {
+    width:80%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-auto-columns: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+.grid-item {
+    background-color: #5090de;
+    border: 3px solid #3985e0;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
 }
