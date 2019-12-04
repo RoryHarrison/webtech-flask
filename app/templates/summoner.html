@@ -11,9 +11,18 @@
             <h5 class="text">Level: {{ sdata["summonerLevel"] }}</h5>
         </div>
     </div>
+    <div class="d-flex justify-content-center mt-4 p-3">
+        <h3 class="text">Top Champions</h3>
+    </div>
     <div class="d-flex justify-content-center mx-4 p-3">
         {% for n in range(3) %}
-            <div class="flex-fill p-2 mx-5 info rounded">{{ mdata[n]["championLevel"] }}</div>
+            <div class="flex-fill p-2 mx-1 info rounded">
+                <h4 class="text centered">{{ mdata[n]["name"] }}</h4>
+                <img class="champIconLarge rounded centered" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ mdata[n]['codeName'] }}_0.jpg">
+                <img class="centered masteryIcon" src="https://raw.githubusercontent.com/RiotAPI/Riot-Games-API-Developer-Assets/master/champion-mastery-icons/mastery-{{ mdata[n]['championLevel']}}.png">
+                <h5 class="text centered"> Level {{ mdata[n]["championLevel"] }}</h5>
+                <h5 class="text centered"> Mastery Points: {{ mdata[n]["championPoints"] }}</h5>
+            </div>
         {% endfor %}
     </div>
 </div>
