@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<link rel="stylesheet" href="../static/css/landing.css">
+<link rel="stylesheet" href="../static/css/summoner.css">
 
+<!-- Left Pane -->
+<div class="split left">
+    <div class="d-flex justify-content-left info rounded mx-4 p-3">
+        <img class="icon rounded" src="http://ddragon.leagueoflegends.com/cdn/9.3.1/img/profileicon/{{ sdata['profileIconId'] }}.png" height=100 width=100>
+        <div class="flex-fill p-2 mx-4">
+            <h3 class="text mb-3">{{ sdata["name"] }}</h3>
+            <h5 class="text">Level: {{ sdata["summonerLevel"] }}</h5>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mx-4 p-3">
+        {% for n in range(3) %}
+            <div class="flex-fill p-2 mx-5 info rounded">{{ mdata[n]["championLevel"] }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Right Pane -->
+<div class="split right">
+
+</div>
 
 {% endblock %}
