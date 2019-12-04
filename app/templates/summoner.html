@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../static/css/summoner.css">
 
 <!-- Left Pane -->
-<div class="split left">
+<div class="split left mt-5">
     <div class="d-flex justify-content-left info rounded mx-4 p-3">
         <img class="icon rounded" src="http://ddragon.leagueoflegends.com/cdn/9.3.1/img/profileicon/{{ sdata['profileIconId'] }}.png" height=100 width=100>
         <div class="flex-fill p-2 mx-4">
@@ -28,8 +28,48 @@
 </div>
 
 <!-- Right Pane -->
-<div class="split right">
-
+<div class="split right mt-5">
+    <div class="d-flex justify-content-center info rounded centered">
+        <h4 class="text centered">Champion Mastery Statistics</h4>
+    </div>
+    <div class=" d-flex info rounded centered scrollwrapper mt-3 fill">
+        <div class="table-wrapper rounded centered" id="sb-style">
+                <table id="dataTable" class="table table-bordered" height="200px"width="auto" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Icon</th>
+                            <th scope="col">Champion</th>
+                            <th scope="col">Emblem</th>
+                            <th scope="col">Mastery Points</th>
+                            <th scope="col">Tokens Earned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for champ in mdata %}
+                        <tr>
+                            <td><img style="height:60px;width:auto;border-radius:40%;" src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/{{ champ['codeName'] }}_0.jpg"></td>
+                            <td><p class="table-text">{{ champ["name"] }}</p></td>
+                            <td><img style="height:60px;width:auto;" src="https://raw.githubusercontent.com/RiotAPI/Riot-Games-API-Developer-Assets/master/champion-mastery-icons/mastery-{{ champ['championLevel']}}.png"></td>
+                            <td><p class="table-text">{{ champ["championPoints"] }}</p></td>
+                            <td><p class="table-text">{{ champ["tokensEarned"] }}</p></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            scrollY: "650px",
+            scrollCollapse: true,
+            paging: false,
+            searching: false,
+            info: false
+        });
+    });
+</script>
 
 {% endblock %}

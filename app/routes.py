@@ -2,6 +2,7 @@ from app import app
 import os
 import json
 import requests
+import pandas as pd
 from DataHandler import DataHandler
 from config import Config
 from forms import SummonerForm
@@ -43,6 +44,26 @@ def summoner():
     mdata = data_handler.MergeChampData()
 
     return render_template('summoner.html', sdata=sdata, mdata=mdata)
+
+@app.route('/highscores', methods=['GET', 'POST'])
+def highscores():
+    
+    #ChampionData
+    cdata = pd.read_json(requests.get("http://ddragon.leagueoflegends.com/cdn/9.23.1/data/en_US/champion.json").content)
+    
+    champion = request.args.get("champion")
+
+    if champion is not None:
+        for champ in cdata["data"]:
+            if champ["name"] == champion:
+                hs_data = json.loads(requests.get("https://www.masterypoints.com/api/v1.1/highscores/champion/{}/0/30/any".format(champ["key"])).content)
+                return render_template("highscores.html", champ=cdata["data"], hs_data=hs_data)
+        abort(404)
+    return "neet :("
+
+
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):

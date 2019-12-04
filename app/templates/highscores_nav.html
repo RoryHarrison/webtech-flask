@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/highscores_nav.css">
+<div class="container-fluid">
+    <div class="d-flex justify-content-center mx-5">
+        <h3 class="title">Select a Champion:</h3>
+    </div>
+    <div class="d-flex justify-content-center mx-5">
+        <div class="grid-container">
+            {% for champ in cdata %}
+            <div class="grid-item"><img class="icon" src="http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/{{ cdata['id'] }}_0.jpg"></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
