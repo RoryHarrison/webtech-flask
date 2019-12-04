@@ -3,9 +3,9 @@ League of Legends Mastery Points Stat Tracker
 ## Instructions for running the project
 The project can be cloned from the git repository located in ~/submission/project.git on webtech-29.
 
-There is also a 'ready to go' version in ~/webtech-flask
+There is also a 'ready to go' version in ~/40296172/webtech-flask
 
-Simply navigate to ~/webtech-flask and run the command ``` flask run --host=0.0.0.0 --port=80 ```, this has been set up to launch the website on port 80.
+Simply navigate to ~/40296172/webtech-flask, enter the virtualenv using the command ``` source env/bin/activate ``` and run the command ``` flask run --host=0.0.0.0 --port=80 ```, this has been set up to launch the website on port 80.
 ## Navigating the Website
 From the home page located in root or /index there are two areas of functionality to explore:
 #### Summoner(Player) statistics
